@@ -1,10 +1,10 @@
 // Requiring mongoose
-import mongoose from "mongoose";
+var mongoose = require("mongoose");
 // Creating Schema 
-const Schema = mongoose.Schema;
+var Schema = mongoose.Schema;
 
 // Create Article schema
-const ArticleSchema = new Schema({
+var ArticleSchema = new Schema({
   // Title 
   title: {
     type: String,
@@ -24,7 +24,7 @@ const ArticleSchema = new Schema({
 });
 
 // Create Article model with ArticleSchema
-let Article = mongoose.model("Article", ArticleSchema);
+var Article = mongoose.model("Article", ArticleSchema);
 
 // Export Article model 
-export default Article;
+module.exports = Article;

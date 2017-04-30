@@ -1,18 +1,18 @@
 // Include Server Dependencies
-import express from "express";
-import bodyParser from  "body-parser";
-import logger from  "morgan";
-import mongoose from  "mongoose";
+var express = require("express");
+var bodyParser =require("body-parser");
+var logger = require("morgan");
+var mongoose = require("mongoose");
 
 console.log("**********************************");
 
 // Require Article Schema
-import Article from  "./models/article.js";
+var Article = require("./models/article.js");
 
 // Create Instance of Express
 let app = express();
 // Set port
-let port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 // Run Morgan for Logging
 app.use(logger("dev"));

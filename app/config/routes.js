@@ -4,14 +4,7 @@ var React = require("react");
 // Include react-router 
 var router = require("react-router");
 
-// Include Route component to display individual routes
-var Route = router.Route;
-
-// Include Router component to contain all Routes
-var Router = router.Router;
-
-// Include hashHistory prop to handle routing client side without a server
-var hashHistory = router.hashHistory;
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 // Include IndexRoute (catch-all route)
 var IndexRoute = router.IndexRoute;
@@ -27,7 +20,7 @@ var Results = require("../components/children/grandchildren/Results");
 module.exports = (
 
   // The high level component is the Router component
-  <Router history={hashHistory}>
+  <Router history={Router}>
 
     <Route path="/" component={Main}>
 

@@ -2,16 +2,6 @@
 var React = require("react");
 
 var Main = React.createClass({
-	
-	// constructor(props) {
-	// 	super(props);
-
-	// 	this.state = {
-	// 		searchTerm: "",
-	// 		startDate: "",
-	// 		endDate: ""
-	// 	};
-	// },
 
 	 render: function() {
 		return (

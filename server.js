@@ -1,25 +1,55 @@
-const express = require('express');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpack = require('webpack');
-const webpackConfig = require('./webpack.config.js');
-const app = express();
- 
-const compiler = webpack(webpackConfig);
- 
-app.use(express.static(__dirname + '/www'));
- 
-app.use(webpackDevMiddleware(compiler, {
-  hot: true,
-  filename: 'bundle.js',
-  publicPath: '/',
-  stats: {
-    colors: true,
-  },
-  historyApiFallback: true,
-}));
- 
-const server = app.listen(3000, function() {
-  const host = server.address().address;
-  const port = server.address().port;
-  console.log('Example app listening at http://%s:%s', host, port);
+// Include Server Dependencies
+var express = require("express");
+var bodyParser =require("body-parser");
+var logger = require("morgan");
+var mongoose = require("mongoose");
+
+console.log("**********************************");
+
+// Require Article Schema
+var Article = require("./models/article.js");
+
+// Create Instance of Express
+let app = express();
+// Set port
+const port = process.env.PORT || 3000;
+
+// Run Morgan for Logging
+app.use(logger("dev"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+// Serve all static files in public folder
+app.use(express.static("./public"));
+
+// -------------------------------------------------
+
+// Database configuration with mongoose on production or dev environment
+if(process.env.MONGODB_URI) {
+	console.log("Attempting to connect to MLAB");
+ 	mongoose.connect("mongodb://heroku_fl8r4965:evunrm7ajblrk1dh57q3muc189@ds125481.mlab.com:25481/heroku_fl8r4965");
+
+}else {
+   mongoose.connect("mongodb://localhost/nytreact");
+}
+// Assign the connection to db
+let db = mongoose.connection;
+// If error in connecting,
+db.on("error", function(err) {
+  console.log("Mongoose Error: ", err);
+});
+// Once connected,
+db.once("open", function() {
+  console.log("Mongoose connection successful.");
+});
+
+// ------------------------------------
+
+// Requiring article-controller
+require("./controllers/article-controller.js")(app);
+
+// Listening on port
+app.listen(port, function() {
+	console.log("Listening on " + port);
 });

@@ -10,11 +10,11 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 var IndexRoute = router.IndexRoute;
 
 // Reference high-level components
-var Main = require("../components/Main");
-var Saved = require("../components/children/Saved");
-var Search = require("../components/children/Search");
-var Query = require("../components/children/grandchildren/Query");
-var Results = require("../components/children/grandchildren/Results");
+import Main from "../components/Main";
+import Saved from "../components/children/Saved";
+import Search from "../components/children/Search";
+import Query from "../components/children/grandchildren/Query";
+import Results from "../components/children/grandchildren/Results";
 
 // Export the Routes
 module.exports = (

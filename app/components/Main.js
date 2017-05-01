@@ -1,9 +1,19 @@
 // Boiler plate code
-var React = require("react");
+import React from "react";
 
-var Main = React.createClass({
+class Main extends React.Component {
+	
+	constructor(props) {
+		super(props);
 
-	 render: function() {
+		this.state = {
+			searchTerm: "",
+			startDate: "",
+			endDate: ""
+		};
+	}
+
+	render() {
 		return (
 			<div className="container">
 				<div className="jumbotron">
@@ -16,6 +26,6 @@ var Main = React.createClass({
 			</div>
 		);
 	}
-});
+};
 
-module.exports = Main;
+export default Main;

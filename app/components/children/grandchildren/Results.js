@@ -1,37 +1,36 @@
-// Boiler plate code
-import React from "react";
+// Include React
+var React = require("react");
 
-class Results extends React.Component {
-	constructor(props) {
-		super(props);
+var Results = React.createClass({
 
-		this.state = {
-			
-		};
-
-	}
-
-	render() {
-		return (
-			<div className="container">
+  render: function() {
+  	 // If no articles, render this HTML
+    if (!this.props.results.docs) {
+      return (
+        <li className="list-group-item">
+          <h3>
+            <span>
+              <em>Enter a search term above</em>
+            </span>
+          </h3>
+        </li>
+      );
+    }
+    return (
+      <div className="row">
 				<div className="panel panel-default">
 					<div className="panel-heading">
-						<div className="panel-title">
+						<div className="panel-title text-center">
+							Results
 						</div>
 					</div>
 					<div className="panel-body">
-					</div>
-				</div>
-
-				<div className="row">
-					<div className="col-sm-4">
+						
 					</div>
 				</div>
 			</div>
+    );
+  }
+});
 
-
-		)
-	}
-}
-
-export default Results;
+module.exports = Results;

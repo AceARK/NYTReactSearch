@@ -1,5 +1,7 @@
 // Boiler plate code
 import React from "react";
+import Saved from "./children/Saved";
+import Search from "./children/Search";
 
 class Main extends React.Component {
 	
@@ -16,16 +18,19 @@ class Main extends React.Component {
 	render() {
 		return (
 			<div className="container">
-				<div className="jumbotron">
+				<div className="jumbotron text-center">
 					<h1>NY Times Article Search</h1>
 					<h3>Search for and annotate articles of interest!</h3>
 				</div>
-				<div>
-					{this.props.children}
+				<div className="container row">
+					<div className="col-xs-12">
+						<Search />
+						<Saved />
+					</div>
 				</div>
 			</div>
 		);
 	}
 };
 
-export default Main;
+module.exports = Main;

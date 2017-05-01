@@ -21,9 +21,9 @@
     "express": "^4.15.2",
     "mongoose": "^4.9.6",
     "morgan": "^1.8.1",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-router": "^4.1.1"
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "react-router": "^2.4.1"
   },
   "bugs": {
     "url": "https://github.com/AceARK/NYTReactSearch/issues"

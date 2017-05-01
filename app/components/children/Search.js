@@ -1,37 +1,17 @@
-// Boiler plate code
-import React from "react";
+// Include React
+var React = require("react");
+import Query from "./grandchildren/Query";
+import Results from "./grandchildren/Results";
 
-class Search extends React.Component {
-	constructor(props) {
-		super(props);
+var Search = React.createClass({
 
-		this.state = {
-			
-		};
+  render: function() {
+    return (
+      	<div className="row">
+			<Query />
+		</div>
+    );
+  }
+});
 
-	}
-
-	render() {
-		return (
-			<div className="container">
-				<div className="panel panel-default">
-					<div className="panel-heading">
-						<div className="panel-title">
-						</div>
-					</div>
-					<div className="panel-body">
-					</div>
-				</div>
-
-				<div className="row">
-					<div className="col-sm-4">
-					</div>
-				</div>
-			</div>
-
-
-		)
-	}
-}
-
-export default Search;
+module.exports = Search;

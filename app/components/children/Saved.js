@@ -13,18 +13,15 @@ class Saved extends React.Component {
 
 	render() {
 		return (
-			<div className="container">
+			<div className="row">
 				<div className="panel panel-default">
 					<div className="panel-heading">
-						<div className="panel-title">
+						<div className="panel-title text-center">
+							Saved
 						</div>
 					</div>
 					<div className="panel-body">
-					</div>
-				</div>
-
-				<div className="row">
-					<div className="col-sm-4">
+						
 					</div>
 				</div>
 			</div>
@@ -34,4 +31,4 @@ class Saved extends React.Component {
 	}
 }
 
-export default Saved;
+module.exports = Saved;

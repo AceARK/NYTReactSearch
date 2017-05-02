@@ -18,7 +18,8 @@ var Results = React.createClass({
     console.log(article);
 
     helpers.saveArticle(article.headline.main, article.pub_date, article.web_url).then(function(data){
-        console.log(article.web_url);
+        console.log(data);
+        this.props.updateSaved();
     }.bind(this));
   },
 

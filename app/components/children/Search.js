@@ -16,6 +16,10 @@ var Search = React.createClass({
   	}
   },
 
+  updateSaved: function() {
+  	this.props.updateSaved();
+  },
+
    // If the component changes (i.e. if a search is entered)...
   componentDidUpdate: function(prevProps, prevState) {
 
@@ -43,7 +47,7 @@ var Search = React.createClass({
     return (
       	<div className="row">
 			<Query setSearchState = {this.setSearchState} />
-			<Results results = {this.state.results} />
+			<Results results = {this.state.results} updateSaved={this.updateSaved} />
 		</div>
     );
   }

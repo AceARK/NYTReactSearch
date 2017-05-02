@@ -36,8 +36,8 @@ var helpers = {
 	    var newArticle = {title: title, date: date, url: url};
 	    return axios.post('/api/saved', newArticle)
 	      .then(function(results){
-	        console.log("id of saved article", results._id);
-	        return results._id;
+	        console.log(results.data);
+	        return results.data;
 	      })
 
 	  },

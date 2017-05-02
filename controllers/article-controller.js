@@ -36,9 +36,9 @@ module.exports = function(app) {
 	// Route to delete an article from db
 	app.delete('/api/saved/', function(req, res){
 
-	  var url = req.param('url');
+	  var id = req.param('_id');
 
-	  Article.find({"url": url}).remove().exec(function(err, data){
+	  Article.find({"_id": id}).remove().exec(function(err, data){
 	    if(err){
 	      console.log(err);
 	    }

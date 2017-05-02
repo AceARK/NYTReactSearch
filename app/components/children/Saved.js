@@ -11,6 +11,17 @@ class Saved extends React.Component {
 			saved: [],
 			updated: 0
 		};
+
+		this.handleClick = this.handleClick.bind(this);
+	}
+
+	handleClick(article,event) {
+		console.log(article);
+
+		helpers.deleteSavedArticle(article._id).then(function(response) {
+			console.log(response);
+			this.setState({ updated: 1 });
+		}.bind(this));
 	}
 
 	componentDidMount() {
@@ -24,7 +35,7 @@ class Saved extends React.Component {
 	componentDidUpdate(prevProps, prevState) {
 		console.log("'Saved' component has updated");
 		console.log(prevState.updated + "  +  " + this.state.updated);
-		if(prevProps.savedUpdated !== this.props.savedUpdated) {
+		if(prevProps.savedUpdated !== this.props.savedUpdated || prevState.updated !== this.state.updated) {
 			this.setState({
 				updated: this.props.savedUpdated
 			});
@@ -48,14 +59,14 @@ class Saved extends React.Component {
 	                <h3>{item.title}</h3>
 	                <p>Date published: {item.date}</p>
 	                <a href={item.url} target="_blank"><p>View full article</p></a>
-	                <button className="btn btn-lg btn-warning">Unsave</button>
+	                <button className="btn btn-lg btn-warning" onClick={this.handleClick.bind(this, item)}>Unsave</button>
 	            </div>
 			);
-		});
+		}.bind(this));
 		return (
 
 			<div className="row">
-				<div className="panel panel-default">
+				<div className="panel panel-primary">
 					<div className="panel-heading">
 						<div className="panel-title text-center">
 							Saved

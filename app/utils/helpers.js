@@ -42,13 +42,11 @@ var helpers = {
 
 	  },
 
-	  deleteSavedArticle: function(title, data, url){
+	  deleteSavedArticle: function(id){
 
 	    return axios.delete('/api/saved', {
 	      params: {
-	          'title': title,
-	          'data': data,
-	          'url': url,
+	          '_id': id,
 	      }
 	    })
 	    .then(function(results){

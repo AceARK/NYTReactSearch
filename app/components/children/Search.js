@@ -24,7 +24,7 @@ var Search = React.createClass({
   componentDidUpdate: function(prevProps, prevState) {
 
     // Run the query for the address
-    if (this.state.queryTerm != "" && (prevState.queryTerm != this.state.queryTerm || prevState.startYear != this.state.startYear || prevState.endYear != this.state.endYear)) {
+    if (this.state.searchTopic != "" && (prevState.searchTopic != this.state.searchTopic || prevState.startYear != this.state.startYear || prevState.endYear != this.state.endYear)) {
 	    helpers.runQuery(this.state.searchTopic, this.state.startYear, this.state.endYear).then(function(data) {
 	      	if (data !== this.state.results) {
 	        	console.log("Data",data);

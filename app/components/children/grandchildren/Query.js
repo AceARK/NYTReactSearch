@@ -3,7 +3,7 @@ var React = require("react");
 
 var Query = React.createClass({
 
-
+  // Get initial state
   getInitialState: function() {
   	return {
   		searchTopic: "",
@@ -12,15 +12,17 @@ var Query = React.createClass({
   	};
   },
 
+  // Watch for changes to the input fields
   handleChange: function(event) {
   	var newState = {};
   	newState[event.target.id] = event.target.value;
   	this.setState(newState);
   },
 
+  // Function to handle form submit
   handleSubmit: function(event) {
   	event.preventDefault();
-  	// Perform a call to helpers function runQuery, .then (), display Results with articles limit 5 
+  	// Set parent state
   	this.props.setSearchState(this.state.searchTopic, this.state.startYear, this.state.endYear);
   	this.setState({
   		searchTopic: "",
@@ -29,9 +31,10 @@ var Query = React.createClass({
   	});
   },
 
+  // Render the component
   render: function() {
     return (
-		<div className="panel panel-default">
+		<div className="panel panel-primary">
 			<div className="panel-heading">
 				<div className="panel-title text-center">
 					Query

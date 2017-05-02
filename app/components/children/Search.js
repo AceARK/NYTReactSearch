@@ -7,6 +7,7 @@ import helpers from "../../utils/helpers.js";
 
 var Search = React.createClass({
 
+  // Get initial state
   getInitialState: function() {
   	return{
   		searchTopic: "",
@@ -16,14 +17,15 @@ var Search = React.createClass({
   	}
   },
 
+  // Force update of parent component
   updateSaved: function() {
   	this.props.updateSaved();
   },
 
-   // If the component changes (i.e. if a search is entered)...
+   // If the component updates
   componentDidUpdate: function(prevProps, prevState) {
 
-    // Run the query for the address
+    // If topic is new, run query
     if (this.state.searchTopic != "" && (prevState.searchTopic != this.state.searchTopic || prevState.startYear != this.state.startYear || prevState.endYear != this.state.endYear)) {
 	    helpers.runQuery(this.state.searchTopic, this.state.startYear, this.state.endYear).then(function(data) {
 	      	if (data !== this.state.results) {
@@ -35,6 +37,7 @@ var Search = React.createClass({
 	}
   },
 
+  // The function that sets state of this component using child component Query
   setSearchState: function(topic, startyear, endyear) {
   	this.setState({
   		searchTopic: topic,
@@ -43,6 +46,7 @@ var Search = React.createClass({
   	});
   },
 
+  // Render Search component with Query and Results child components
   render: function() {
     return (
       	<div className="row">

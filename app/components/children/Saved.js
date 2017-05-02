@@ -49,22 +49,28 @@ class Saved extends React.Component {
 		}
 	}
 
+	// Render this component
 	render() {
 		console.log(this.state.saved);
+		// For each item from db, render headline, date and url
 		var saved = this.state.saved.map(function(item, index){
 			console.log("rendering item " + index);
 			return (
-				 <div key={index} className="articleItem">
-
-	                <h3>{item.title}</h3>
-	                <p>Date published: {item.date}</p>
-	                <a href={item.url} target="_blank"><p>View full article</p></a>
-	                <button className="btn btn-lg btn-warning" onClick={this.handleClick.bind(this, item)}>Unsave</button>
+			 	<div key={index} className="panel panel-primary">
+					<div className="panel-heading">
+						<div className="panel-title">
+							<h5>{item.title}</h5>
+						</div>
+					</div>
+					<div className="panel-body">
+		                <p>Date published: {item.date}</p>
+		                <a href={item.url} target="_blank"><p>View full article</p></a>
+		                <button className="btn btn-lg btn-warning" onClick={this.handleClick.bind(this, item)}>Unsave</button>
+	            	</div>
 	            </div>
 			);
 		}.bind(this));
 		return (
-
 			<div className="row">
 				<div className="panel panel-primary">
 					<div className="panel-heading">
@@ -77,8 +83,6 @@ class Saved extends React.Component {
 					</div>
 				</div>
 			</div>
-
-
 		)
 	}
 }

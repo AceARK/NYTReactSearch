@@ -6,7 +6,7 @@ import Search from "./children/Search";
 import helpers from "../utils/helpers.js";
 
 class Main extends React.Component {
-	
+	// Get initial state
 	constructor(props) {
 		super(props);
 
@@ -15,10 +15,10 @@ class Main extends React.Component {
 			saved: [],
 			savedUpdated: 0
 		};
-
 		this.updateSaved = this.updateSaved.bind(this);
 	}
 
+	// Force update this component and update child Saved 
 	updateSaved() {
 		var newRandom = Math.random()*20 + 1;
 		console.log("State before update: " + this.state.savedUpdated);
@@ -28,6 +28,7 @@ class Main extends React.Component {
 		});
 	}
 
+	// Render the component
 	render() {
 		console.log("Saved updated state now: " + this.state.savedUpdated);
 		return (

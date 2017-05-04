@@ -3,6 +3,8 @@ var React = require("react");
 
 var helpers = require("../../../utils/helpers.js");
 
+// var socket = io.connect();
+
 var Results = React.createClass({
 
   getInitialState: function() {
@@ -15,13 +17,15 @@ var Results = React.createClass({
 
   // On click of Save button, save article to db
   handleClick: function(article, event){
-    // console.log("Save button clicked");
+    console.log("Save button clicked");
     console.log(article);
     // User helpers saveArticle function
     helpers.saveArticle(article.headline.main, article.pub_date, article.web_url).then(function(data){
-          // if(data.errmsg)
+          // socket.emit('announcement', article.headline.main);
           console.log(data);
           console.log("ARTICLE TITLE FROM RESULTS COMPONENT" + article.headline.main);
+          var savedTitle = article.headline.main;
+          this.props.updateSaved(savedTitle);
     }.bind(this));
   },
 

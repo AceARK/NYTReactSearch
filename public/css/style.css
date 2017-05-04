@@ -4,8 +4,8 @@
 
 .notification {
 	position: fixed;
-	top: 2;
-	right: 5;
+	top: 20px;
+	right: 30%;
 	border-radius: 40px;
 	background-color: #22d8bd;
 	padding: 15px;

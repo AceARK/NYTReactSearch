@@ -21,12 +21,14 @@ class Main extends React.Component {
 	}
 
 	// Force update this component and update child Saved 
-	updateSaved() {
+	updateSaved(savedTitle) {
 		var newRandom = Math.random()*20 + 1;
 		console.log("State before update: " + this.state.savedUpdated);
 		console.log("NewRandom: " + newRandom);
+		console.log("TITLE IN MAIN" + savedTitle);
 		this.setState({
 			savedUpdated: newRandom,
+			title: savedTitle
 		});
 	}
 
@@ -44,7 +46,7 @@ class Main extends React.Component {
 				</div>
 				<div className="container row">
 					<div className="col-xs-12">
-						<Search />
+						<Search updateSaved={this.updateSaved} />
 						<Saved savedUpdated={this.state.savedUpdated} />
 					</div>
 				</div>

@@ -19,11 +19,10 @@ var helpers = {
       		return results.data.response;
 
     	});
-
 	},
 
-	// Save to database
-	 getSavedArticles: function(){
+	// Get all saved articles
+	 getSavedArticles: function() {
 	    return axios.get('/api/saved')
 	      .then(function(results){
 	        console.log("saved article results", results);
@@ -31,7 +30,8 @@ var helpers = {
 	      })
 	  },
 
-	  saveArticle: function(title, date, url){
+	  // Save article to db
+	  saveArticle: function(title, date, url) {
 
 	    var newArticle = {title: title, date: date, url: url};
 	    return axios.post('/api/saved', newArticle)
@@ -42,7 +42,8 @@ var helpers = {
 
 	  },
 
-	  deleteSavedArticle: function(id){
+	  // Delete an article from db
+	  deleteSavedArticle: function(id) {
 
 	    return axios.delete('/api/saved', {
 	      params: {

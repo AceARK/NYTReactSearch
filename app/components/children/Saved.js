@@ -15,46 +15,46 @@ class Saved extends React.Component {
 		this.handleClick = this.handleClick.bind(this);
 	}
 
+	// Handle click of unsave button
 	handleClick(article,event) {
-		console.log(article);
+		// console.log(article);
 
 		helpers.deleteSavedArticle(article._id).then(function(response) {
-			console.log(response);
+			// console.log(response);
 			this.setState({ updated: 1 });
 		}.bind(this));
 	}
 
+	// Called once the component has mounted
 	componentDidMount() {
 		helpers.getSavedArticles().then(function(response) {
-			console.log(response);
+			// console.log(response);
 			this.setState({saved: response.data});
-			console.log(this.state.saved);
+			// console.log(this.state.saved);
 		}.bind(this));
 	}
 
+	// Called each time this component updates
 	componentDidUpdate(prevProps, prevState) {
-		console.log("'Saved' component has updated");
-		console.log(prevState.updated + "  +  " + this.state.updated);
+		// Conditional state change to avoid stack overflow error
 		if(prevProps.savedUpdated !== this.props.savedUpdated || prevState.updated !== this.state.updated) {
 			this.setState({
 				updated: this.props.savedUpdated
 			});
-			console.log(this.state.updated + this.state.saved);
-			console.log("getting saved articles");
+			// using helper function to get all saved articles
 			helpers.getSavedArticles().then(function(response) {
-				console.log(response);
+				// console.log(response);
 				this.setState({saved: response.data});
-				console.log(this.state.saved);
+				// console.log(this.state.saved);
 			}.bind(this));
 		}
 	}
 
 	// Render this component
 	render() {
-		console.log(this.state.saved);
 		// For each item from db, render headline, date and url
 		var saved = this.state.saved.map(function(item, index){
-			console.log("rendering item " + index);
+			// console.log("rendering item " + index);
 			return (
 			 	<div key={index} className="panel panel-primary">
 					<div className="panel-heading">

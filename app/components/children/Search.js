@@ -17,11 +17,6 @@ var Search = React.createClass({
   	}
   },
 
-  // Force update of parent component
-  updateSaved: function(title) {
-  	this.props.updateSaved(title);
-  },
-
    // If the component updates
   componentDidUpdate: function(prevProps, prevState) {
 
@@ -29,7 +24,7 @@ var Search = React.createClass({
     if (this.state.searchTopic != "" && (prevState.searchTopic != this.state.searchTopic || prevState.startYear != this.state.startYear || prevState.endYear != this.state.endYear)) {
 	    helpers.runQuery(this.state.searchTopic, this.state.startYear, this.state.endYear).then(function(data) {
 	      	if (data !== this.state.results) {
-	        	console.log("Data",data);
+	        	// console.log("Data",data);
 	        	this.setState({ results: data });
 	      	}
 
@@ -51,7 +46,7 @@ var Search = React.createClass({
     return (
       	<div className="row">
 			<Query setSearchState = {this.setSearchState} />
-			<Results results = {this.state.results} updateSaved={this.updateSaved} />
+			<Results results = {this.state.results} />
 		</div>
     );
   }

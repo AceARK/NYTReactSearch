@@ -2,7 +2,7 @@
 var Article = require("../models/article.js");
 
 // Export controller function
-module.exports = function(app) {
+module.exports = function(app, io) {
 	// Route to get saved articles
 	app.get('/api/saved', function(req, res) {
 
@@ -28,6 +28,7 @@ module.exports = function(app) {
 	    if(err){
 	      res.send(err);
 	    } else {
+	      io.emit('broadcast', req.body.title);
 	      res.send(doc._id);
 	    }
 	  });

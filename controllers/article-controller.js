@@ -26,7 +26,7 @@ module.exports = function(app) {
 
 	  newArticle.save(function(err, doc){
 	    if(err){
-	      console.log(err);
+	      res.send(err);
 	    } else {
 	      res.send(doc._id);
 	    }

@@ -11,6 +11,9 @@ var Article = require("./models/article.js");
 
 // Create Instance of Express
 let app = express();
+
+// var server = require('http').createServer(app);  
+// var io = require('socket.io').listen(server);
 // Set port
 const port = process.env.PORT || 3000;
 
@@ -45,6 +48,25 @@ db.once("open", function() {
 });
 
 // ------------------------------------
+
+// io.on('connection', function(socket) {
+// 	console.log('a user connected');
+// 	io.emit('connect message', "a user connected");
+// 	socket.on('disconnect', function(){
+//     	console.log('user disconnected');
+//     	io.emit('connect message', "a user disconnected");
+//   	});
+//   	socket.on('announcement', function(msg){
+//     	io.emit('announcement', msg);
+//   });
+//   	socket.on('connect message', function(msg){
+//     	io.emit('connect message', msg);
+//   });
+// });
+
+// http.listen(3000, function() {
+// 	console.log("listening on port " + 3000);
+// });
 
 // Requiring article-controller
 require("./controllers/article-controller.js")(app);

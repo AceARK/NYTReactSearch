@@ -18,8 +18,8 @@ var Search = React.createClass({
   },
 
   // Force update of parent component
-  updateSaved: function() {
-  	this.props.updateSaved();
+  updateSaved: function(title) {
+  	this.props.updateSaved(title);
   },
 
    // If the component updates

@@ -3,6 +3,8 @@ var React = require("react");
 
 var helpers = require("../../../utils/helpers.js");
 
+// var socket = io.connect();
+
 var Results = React.createClass({
 
   getInitialState: function() {
@@ -19,9 +21,17 @@ var Results = React.createClass({
     console.log(article);
     // User helpers saveArticle function
     helpers.saveArticle(article.headline.main, article.pub_date, article.web_url).then(function(data){
-        console.log(data);
-        this.props.updateSaved();
+          // if(data.errmsg)
+          // socket.emit('announcement', article.headline.main);
+          console.log(data);
+          console.log("ARTICLE TITLE FROM RESULTS COMPONENT" + article.headline.main);
+          var savedTitle = article.headline.main;
+          this.props.updateSaved(savedTitle);
     }.bind(this));
+  },
+
+  emitEvent: function(article) {
+    socket.emit('announcement', article.headline.main);
   },
 
   // Render the component

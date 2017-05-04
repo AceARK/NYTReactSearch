@@ -2,6 +2,7 @@
 import React from "react";
 import Saved from "./children/Saved";
 import Search from "./children/Search";
+import Bubble from "./children/Bubble";
 
 import helpers from "../utils/helpers.js";
 
@@ -13,18 +14,21 @@ class Main extends React.Component {
 		this.state = {
 			search: "",
 			saved: [],
-			savedUpdated: 0
+			savedUpdated: 0,
+			savedArticleTitle: ""
 		};
 		this.updateSaved = this.updateSaved.bind(this);
 	}
 
 	// Force update this component and update child Saved 
-	updateSaved() {
+	updateSaved(savedTitle) {
 		var newRandom = Math.random()*20 + 1;
 		console.log("State before update: " + this.state.savedUpdated);
 		console.log("NewRandom: " + newRandom);
+		console.log("TITLE IN MAIN" + savedTitle);
 		this.setState({
-			savedUpdated: newRandom
+			savedUpdated: newRandom,
+			title: savedTitle
 		});
 	}
 
@@ -36,6 +40,9 @@ class Main extends React.Component {
 				<div className="jumbotron text-center">
 					<h1>NY Times Article Search</h1>
 					<h3>Search for and annotate articles of interest!</h3>
+				</div>
+				<div className="container">
+					<Bubble title={this.state.title} />
 				</div>
 				<div className="container row">
 					<div className="col-xs-12">

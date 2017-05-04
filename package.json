@@ -23,7 +23,8 @@
     "morgan": "^1.8.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
-    "react-router": "^2.4.1"
+    "react-router": "^2.4.1",
+    "socket.io": "^1.7.3"
   },
   "bugs": {
     "url": "https://github.com/AceARK/NYTReactSearch/issues"

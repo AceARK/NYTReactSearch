@@ -17,3 +17,7 @@ button {
 	outline: none !important;
 }
 
+.jumbotron {
+	background-color: #337AB7;
+	color: white;
+}

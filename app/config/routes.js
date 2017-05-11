@@ -31,13 +31,11 @@ module.exports = (
 
     <Route path="/" component={Main}>
       {/* If user selects Child1 then show the appropriate component*/}
-      <Route path="search" component={Search} >
-
-      </Route>
-
+      <IndexRoute component={Search} />
+          <Route path="query" component={Query} />
+          <Route path="results" component={Results} />
       {/* If user selects Child2 then show the appropriate component*/}
       <Route path="saved" component={Saved} />
-
     </Route>
   </Router>
 );

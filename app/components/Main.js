@@ -1,5 +1,6 @@
-// Boiler plate code
 import React from "react";
+import { Link } from 'react-router';
+
 import Saved from "./children/Saved";
 import Search from "./children/Search";
 import Bubble from "./children/Bubble";
@@ -38,6 +39,10 @@ class Main extends React.Component {
 		return (
 			<div className="container">
 				<div className="jumbotron text-center">
+					<ul className="articleLinks list-inline">
+						<li><Link to="/">Search for Articles</Link></li>
+						<li><Link to="/saved">Saved Articles</Link></li>
+					</ul>
 					<h1>NY Times Article Search</h1>
 					<h3>Search for and annotate articles of interest!</h3>
 				</div>
@@ -46,8 +51,9 @@ class Main extends React.Component {
 				</div>
 				<div className="container row">
 					<div className="col-xs-12">
-						<Search updateSaved={this.updateSaved} />
-						<Saved savedUpdated={this.state.savedUpdated} />
+
+						{this.props.children}
+						
 					</div>
 				</div>
 			</div>

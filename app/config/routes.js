@@ -22,6 +22,7 @@ var Saved = require("../components/children/Saved");
 var Search = require("../components/children/Search");
 var Query = require("../components/children/grandchildren/Query");
 var Results = require("../components/children/grandchildren/Results");
+var ErrorPage = require("../components/ErrorPage");
 
 // Export the Routes
 module.exports = (
@@ -36,6 +37,7 @@ module.exports = (
           <Route path="results" component={Results} />
       {/* If user selects Child2 then show the appropriate component*/}
       <Route path="saved" component={Saved} />
+      <Route path="*" component={ErrorPage} />
     </Route>
   </Router>
 );

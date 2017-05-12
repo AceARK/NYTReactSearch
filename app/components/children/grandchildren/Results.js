@@ -25,7 +25,7 @@ var Results = React.createClass({
           console.log(data);
           console.log("ARTICLE TITLE FROM RESULTS COMPONENT" + article.headline.main);
           var savedTitle = article.headline.main;
-          this.props.updateSaved(savedTitle);
+          // this.props.updateSaved(savedTitle);
     }.bind(this));
   },
 
@@ -54,7 +54,7 @@ var Results = React.createClass({
             <div key={index} className="panel panel-primary">
               <div className="panel-heading">
                 <div className="panel-title">
-                    <h5>{article.headline.main}</h5>
+                    <h5 dangerouslySetInnerHTML={{__html:article.headline.main}}></h5>
                 </div>
               </div>
               <div className="panel-body">                  
